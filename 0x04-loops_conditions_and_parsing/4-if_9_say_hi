@@ -7,7 +7,6 @@ do
 	then
 		echo "Hi"
 		i=$((i+1))
-		continue
 	fi
 	echo "Best School"
 	i=$((i+1))

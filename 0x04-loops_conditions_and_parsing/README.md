@@ -1,6 +1,6 @@
 # Loops and parsing in bash
 
-## Requirements
+### Requirements
 
 - Ubuntu 20.04 LTS
 - All your `Bash` scripts must pass `Shellcheck` without any error or you will not get any points on the task.

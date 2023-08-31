@@ -1,0 +1,5 @@
+# ssh configuration
+
+SendEnv LANG LC_*
+IdentityFile ~/.ssh/school
+PasswordAuthentication no

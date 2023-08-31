@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# debugging and run apache on a container
+
+echo "ServerName localhost" >> /etc/apache2.config
+sudo service apache2 start

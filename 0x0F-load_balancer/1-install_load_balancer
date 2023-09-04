@@ -8,17 +8,17 @@ sudo apt-get update -y
 sudo apt-get install -y haproxy=2.4.\*
 	
 
-echo \
-	"
-frontend localnodes
-	bind *:80
-	mode http
-	default_backend nodes
-backend nodes
-	mode http
-	balance roundrobin
-	server 246968-web-01 52.91.136.4
-	server 246968-web-01 34.229.184.55" >> /etc/haproxy/haproxy.cfg
-	
+load_balancer="\nfrontend http\n
+\tbind *:80
+\tmode http
+\tdefault_backend load_b
+
+backend load_b\n
+\tbalance roundrobin
+\tserver 246968-web-01 52.91.136.4:80 check
+\tserver 246968-web-02 34.229.184.55:80 check
+"
+echo -e "ENABLED=1\n" | sudo tee -a /etc/default/haproxy
+echo -e "$load_balancer" | sudo tee -a /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart

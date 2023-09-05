@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# setting up nginx as a load balancer
+#  setting up nginx as a load balancer
 
 
 sudo apt-get install -y --no-install-recommends software-properties-common

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # setting up nginx as a load balancer
 
-
+sudo apt-get install nginx
 sudo apt-get install -y --no-install-recommends software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-2.8
 sudo apt-get update -y
 sudo apt-get install -y haproxy=2.8.\*
-	
+sudo apt-get install nginx
 
 load_balancer="\nfrontend http\n
 \tbind *:80

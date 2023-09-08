@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# a Bash script that will display information about subdomains.
+
+
+get_domain_name() {
+	domain="$1"
+	subdomain="$2"
+
+	record_name=$(dig +short -t A "${subdomain}.${domain}")
+
+	if [ -z "$record_name" ]; then
+		echo "${subdomain} doesn't exist"
+	else
+		record_type=$(echo "$record_name" | awk '{if (NR==1) {print "A";}}')
+		destination=$(echo "$record_name" | awk '{print $1}')
+        	echo "The subdomain ${subdomain} is a ${record_type} record and points to ${destination}"
+	fi		
+}
+
+main() {
+	domain="$1"
+	subdomain="$2"
+
+	if [ -z "$subdomain" ]; then
+		subdomain="www lb-01 web-01 web-02"
+	fi
+	
+	for sub in $subdomain; do
+		get_domain_name "$domain" "$sub"
+	done
+}
+
+main "$1" "$2"

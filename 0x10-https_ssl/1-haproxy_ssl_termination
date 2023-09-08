@@ -33,16 +33,21 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend http-in
+frontend http
 
         bind *:80
-        bind *:443 ssl crt /etc/letsencrypt/live/www.nafula.tech/fullchain.pem
-        http-request redirect scheme https unless { ssl_fc }
-        http-request set-header X-Forwarded-Proto https
+        http-request add-header X-Forwarded-Proto http
+        default_backend web_servers
+
+frontend http-in
+
+        bind *:443 ssl crt /etc/ssl/certs/ssl.pem
+        http-request add-header X-Forwarded-Proto https
         default_backend web_servers
 
 backend web_servers
 
         balance roundrobin
-        server 246968-web-01 52.91.136.4
-        server 246968-web-02 34.229.184.55
+        redirect scheme https if !{ ssl_fc }
+        server 246968-web-01 52.91.136.4:80 check
+        server 246968-web-02 34.229.184.55:80 check

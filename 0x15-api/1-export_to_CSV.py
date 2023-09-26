@@ -16,7 +16,7 @@ def get_employee(job_id):
     try:
         data = requests.get(job_url)
         datas = data.json()
-        name = datas.get("name")
+        name = datas.get("username")
         ids = datas.get("id")
 
         lists = requests.get(person)

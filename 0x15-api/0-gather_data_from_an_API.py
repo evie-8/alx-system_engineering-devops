@@ -26,7 +26,7 @@ def get_employee(job_id):
 
         print(f"Employee {name} is done with tasks({count}/{totals}):")
         for task in completed:
-            print(f"\t{task['title']}")
+            print(f"\t {task['title']}")
     except Exception as e:
         sys.exit(1)
 

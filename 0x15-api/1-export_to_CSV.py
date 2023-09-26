@@ -22,7 +22,7 @@ def get_employee(job_id):
         lists = requests.get(person)
         list_data = lists.json()
 
-        completed = [task for task in list_data if task["completed"]]
+        completed = [task for task in list_data]
         totals = len(list_data)
         count = len(completed)
 
@@ -31,7 +31,7 @@ def get_employee(job_id):
             csv_writer = csv.writer(f,  quoting=csv.QUOTE_ALL)
             for task in completed:
                 csv_writer.writerow([ids, name,
-                                     task["completed"], task["title"]])
+                                     task['completed'], task["title"]])
     except Exception as e:
         sys.exit(1)
 

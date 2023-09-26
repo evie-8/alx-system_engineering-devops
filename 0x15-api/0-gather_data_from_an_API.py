@@ -24,7 +24,7 @@ def get_employee(job_id):
         totals = len(list_data)
         count = len(completed)
 
-        print(f"Employees {name} is done with tasks ({count}/{totals}):")
+        print(f"Employee {name} is done with tasks({count}/{totals}):")
         for task in completed:
             print(f"\t{task['title']}")
     except Exception as e:

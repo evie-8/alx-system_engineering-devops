@@ -9,7 +9,7 @@ import requests
 
 def recurse(subreddit, hot_list=[], newElem="", count=0):
     """the titles of all hot articles for a given subreddit"""
-    url = f"https://www.reddit.com/r{subreddit}/hot/.json"
+    url = f"https://www.reddit.com/r/{subreddit}/hot/.json"
     addHeaders = {
             "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
             }

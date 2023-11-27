@@ -6,7 +6,7 @@ exec { 'Corrections-1':
 }
 
 exec { 'soft-file-limit-increase':
-  command  => 'sudo sed -i "/holberton soft/4/50000/" /etc/security/limits.conf',
+  command  => 'sudo sed -i "/holberton soft/s/4/50000/" /etc/security/limits.conf',
   provider => '/usr/local/bin/:/bin/',
 
 }

@@ -1,12 +1,12 @@
-# fixing issues
+# fixing login errors 
 exec { 'Corrections-1':
-  command  => 'sudo sed -i \ 's/nofile 5/nofile 30000/\' /etc/security/limits.conf',
-  provider => shell,
+  command  => 'sudo sed -i "/holberton hard/s/5/50000/" /etc/security/limits.conf',
+  provider => '/usr/local/bin/:/bin/'
 
 }
 
-exec { 'Corrections-2':
-  command  => 'sudo sed -i \ 's/nofile 4/nofile 10000/\' /etc/security/limits.conf',
-  provider => shell,
+exec { 'soft-file-limit-increase':
+  command  => 'sudo sed -i "/holberton soft/4/50000/" /etc/security/limits.conf',
+  provider => '/usr/local/bin/:/bin/',
 
 }
